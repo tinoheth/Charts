@@ -99,6 +99,12 @@ extension BarLineScatterCandleBubbleRenderer.XBounds: Sequence {
         private var iterator: IndexingIterator<ClosedRange<Int>>
         
         fileprivate init(min: Int, max: Int) {
+        	guard min <= max else {
+        		print("!!! ERROR !!!")
+        		print("Creating iterator with \(min) ... \(max)")
+        		self.iterator = (min...min).makeIterator()
+        		return
+			}
             self.iterator = (min...max).makeIterator()
         }
         
